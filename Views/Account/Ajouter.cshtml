@@ -1,0 +1,86 @@
+﻿
+@{
+    ViewData["Title"] = "Profil du compte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model LaVictoireDesServicesHelpDeskApp.Models.ViewModels.CompteViewModel
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>
+                    Ajouter un compte   
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="dashboard" asp-action="index">Home</a></li>
+                    <li class="breadcrumb-item active">Ajouter un compte </li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+        <div class="row">
+           
+            <div class="col-md-12">
+                @if (ViewBag.msg != null)
+                {
+                    if (ViewBag.msg == "Done")
+                    {
+                        <div class="callout callout-success">
+                            <h4>Réussi</h4>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="callout callout-danger">
+                            <h4>Manqué</h4>
+                        </div>
+                    }
+
+                }
+
+                <div class="card card-primary">
+                    <form asp-controller="compte" asp-action="ajouter" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="username">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" id="username" required="required"
+                                       asp-for="Compte.NomUtilisateur">
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Mot de passe</label>
+                                <input type="password" class="form-control" id="password" required="required" asp-for="Compte.Password">
+                            </div>
+                            <div class="form-group">
+                                <label for="fullname">Nom complet</label>
+                                <input type="text" class="form-control" id="fullname" required="required" asp-for="Compte.NomComplet">
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email" required="required" asp-for="Compte.Email">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" asp-for="Compte.Statut" /> Statut
+                                </label>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Role</label>
+                                <select class="form-control" asp-for="Compte.RoleId" asp-items="@Model.Roles"></select>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>

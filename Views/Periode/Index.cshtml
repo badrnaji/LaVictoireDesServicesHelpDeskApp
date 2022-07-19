@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewData["Title"] = "Liste de comptes";
+    ViewData["Title"] = "Liste de periode";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,13 +9,13 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>
-                    Liste de comptes
+                    Liste de periode
                 </h1>
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a asp-controller="dashboard" asp-action="index">Home</a></li>
-                    <li class="breadcrumb-item active">Profil du compte</li>
+                    <li class="breadcrumb-item active">Liste du periode</li>
                 </ol>
             </div>
         </div>
@@ -49,25 +49,21 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Nom d'utilisateur</th>
-                                    <th>Nom Complet</th>
-                                    <th>Role</th>
+                                    <th>Nom</th>
                                     <th>Statuts</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var compte in ViewBag.comptes)
+                                @foreach (var periode in ViewBag.periodes)
                                 {
                                     <tr>
-                                        <td>@compte.Id</td>
-                                        <td>@compte.NomUtilisateur</td>
-                                        <td>@compte.NomComplet</td>
-                                        <td>@compte.Role.Nom</td>
-                                        <td>@(compte.Statut ? "Active" : "Inactive")</td>
-                                        <td><a asp-controller="compte" asp-action="modifier" 
-                                               asp-route-id="@compte.Id">Modifier</a> |
-                                            <a asp-controller="compte" asp-action="supprimer" asp-route-id="@compte.Id" 
+                                        <td>@periode.Id</td>
+                                        <td>@periode.Nom</td>
+                                        <td>@(periode.Statut ? "Active" : "Inactive")</td>
+                                        <td><a asp-controller="periode" asp-action="modifier" 
+                                               asp-route-id="@periode.Id">Modifier</a> |
+                                            <a asp-controller="periode" asp-action="supprimer" asp-route-id="@periode.Id" 
                                                onclick="return confirm('êtes-vous sûr?')">Supprimer</a>
                                         </td>
                                     </tr>
@@ -75,10 +71,8 @@
                             </tbody>
                             <tfoot>
                                 <tr>
-                                     <th>Id</th>
-                                    <th>Nom d'utilisateur</th>
-                                    <th>Nom Complet</th>
-                                    <th>Role</th>
+                                    <th>Id</th>
+                                    <th>Nom</th>
                                     <th>Statuts</th>
                                     <th>Action</th>
                                 </tr>

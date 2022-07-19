@@ -36,6 +36,7 @@ namespace LaVictoireDesServicesHelpDeskApp.Models
                     .HasMaxLength(250)
                     .IsUnicode(false);
             });
+            
 
             modelBuilder.Entity<Compte>(entity =>
             {
@@ -79,7 +80,7 @@ namespace LaVictoireDesServicesHelpDeskApp.Models
                     .HasForeignKey(d => d.CompteId)
                     .OnDelete(DeleteBehavior.Cascade);
 
-                entity.HasOne(d => d.Ticke)
+                entity.HasOne(d => d.Ticket)
                     .WithMany(p => p.Discussions)
                     .HasForeignKey(d => d.TickeId)
                     .HasConstraintName("FK_Discussions_Tickets");

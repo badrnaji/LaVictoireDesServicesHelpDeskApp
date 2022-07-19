@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace LaVictoireDesServicesHelpDeskApp.Models
 {
+    [Table("Periodes")]
     public partial class Periode
     {
         public Periode()

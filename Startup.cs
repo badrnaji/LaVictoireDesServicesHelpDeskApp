@@ -40,8 +40,11 @@ namespace LaVictoireDesServicesHelpDeskApp
                 });
             var connection = Configuration.GetConnectionString("DefaultConnectionString");
             services.AddDbContext<HelpDeskVictoireDBEntities>(options => options.UseLazyLoadingProxies()
-            .UseSqlServer(connection)); 
+            .UseSqlServer(connection));
+            services.AddSession();
             services.AddControllersWithViews();
+            services.AddMvc().AddSessionStateTempDataProvider();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,7 +63,7 @@ namespace LaVictoireDesServicesHelpDeskApp
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();

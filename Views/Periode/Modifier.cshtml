@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewData["Title"] = "Modifier un periode";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model LaVictoireDesServicesHelpDeskApp.Models.Periode
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>
+                    Modifier un periode
+                </h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a asp-controller="dashboard" asp-action="index">Home</a></li>
+                    <li class="breadcrumb-item active">Modifier un periode</li>
+                </ol>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</section>
+
+<section class="content">
+        <div class="row">
+           
+            <div class="col-md-12">
+                @if (ViewBag.msg != null)
+                {
+                    if (ViewBag.msg == "Done")
+                    {
+                        <div class="callout callout-success">
+                            <h4>Réussi</h4>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="callout callout-danger">
+                            <h4>Manqué</h4>
+                        </div>
+                    }
+
+                }
+
+                <div class="card card-primary">
+                    <form asp-controller="periode" asp-action="modifier" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="username">Nom</label>
+                                <input type="text" class="form-control" id="username" required="required"
+                                       asp-for="Nom">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" asp-for="Statut" /> Statut
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                            <input type="hidden" asp-for="Id" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+</section>

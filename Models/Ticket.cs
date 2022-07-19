@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 #nullable disable
 
 namespace LaVictoireDesServicesHelpDeskApp.Models
 {
+    [Table("Tickets")]
     public partial class Ticket
     {
         public Ticket()
@@ -20,8 +22,8 @@ namespace LaVictoireDesServicesHelpDeskApp.Models
         public int StatutId { get; set; }
         public int CategorieId { get; set; }
         public int PeriodeId { get; set; }
-        public int? EmployeeId { get; set; }
-        public int SupporterId { get; set; }
+        public int EmployeeId { get; set; }
+        public int? SupporterId { get; set; }
 
         public virtual Category Categorie { get; set; }
         public virtual Compte Employee { get; set; }

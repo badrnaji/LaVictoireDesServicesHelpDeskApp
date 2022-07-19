@@ -1,14 +1,10 @@
 ﻿using LaVictoireDesServicesHelpDeskApp.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LaVictoireDesServicesHelpDeskApp.Controllers
 {
-    [Authorize(Roles = "Administrateur,Support,,Employee")]
+    [Authorize(Roles = "Administrateur,Support,Employee")]
     [Route("Dashboard")]
     public class DashboardController : Controller
     {

@@ -1,10 +1,8 @@
 ﻿using LaVictoireDesServicesHelpDeskApp.Models;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using LaVictoireDesServicesHelpDeskApp.Security;
+
 namespace LaVictoireDesServicesHelpDeskApp.Controllers
 {
     [Route("login")]
@@ -44,7 +42,7 @@ namespace LaVictoireDesServicesHelpDeskApp.Controllers
             
         }
         [Route("SignOut")]
-        public IActionResult SignOut()
+        public IActionResult signOut()
         {
             SecurityManager securityManger = new SecurityManager();
             securityManger.SignOut(HttpContext);
@@ -54,12 +52,13 @@ namespace LaVictoireDesServicesHelpDeskApp.Controllers
         public IActionResult AccessDenied()
         {
      
-            return RedirectToAction("AccessDenied");
+            return View("AccessDenied");
         }
+
         
         private Compte check(string username, string password)
         {
-            var compte = db.Comptes.SingleOrDefault(a => a.NomUtilisateur.Equals(username));
+            var compte = db.Comptes.SingleOrDefault(a => a.NomUtilisateur.Equals(username) && a.Statut == true);
             if (compte != null)
             {
                 if (BCrypt.Net.BCrypt.Verify(password, compte.Password))
